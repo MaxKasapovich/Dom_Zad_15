@@ -1,4 +1,4 @@
-package com.company;
+package com.company.mvc.models;
 
 public enum Positions {
     CHIEF,

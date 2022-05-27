@@ -1,12 +1,13 @@
-package com.company;
+package com.company.mvc;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import com.company.mvc.controller.Controller;
+import com.company.mvc.models.Positions;
+import com.company.mvc.models.User;
+import com.company.mvc.models.Store;
 
-public class Main {
+public class LogInTest {
 
     public static void main(String[] args) {
-
         User user1 = new User("Elon Musk","qwerty1","Musk");
         user1.setRole(Positions.CHIEF);
 
@@ -27,24 +28,8 @@ public class Main {
         Store store = new Store("SpaceX","www.spaceX.com",users);
 
         while (true){
-            tryLogin(store);
-        }
-    }
-
-    public static void tryLogin(Store store) {
-        Scanner scanner1 = new Scanner(System.in);
-        System.out.print("Enter login: ");
-        String login = scanner1.nextLine();
-
-        Scanner scanner2 = new Scanner(System.in);
-        System.out.print("Enter password: ");
-        String password = scanner2.nextLine();
-
-        if(store.login(login,password)){
-            store.getCurrentUserRights();
-            store.logOut();
-        } else {
-            System.out.println("Invalid username and/or password.");
+            Controller controller = new Controller();
+            controller.execute(store);
         }
     }
 }
